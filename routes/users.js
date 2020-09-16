@@ -7,7 +7,7 @@ const Userscontroller = require('../controllers/users');
 router.get('/', Userscontroller.index);
 router.post('/', Userscontroller.newUser);
 
-router.get('/:userId', Userscontroller.getUser);
+// router.get('/:userId', Userscontroller.getUser);
 // router.put('/:userId', Userscontroller.replaceUser);
 // router.patch('/:userId', Userscontroller.updateUser);
 

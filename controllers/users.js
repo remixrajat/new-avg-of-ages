@@ -60,20 +60,22 @@ newUserUser_profile: async(req, res, next) => {
 
 getUserUser_profileAvg: async(req, res, next) => {
     var temp = [];
-    const users = await User.find({});
+    var tot = 0;
+    var avg = 0;
+    const users = await User.find({}).populate('user_profiles');
     users.map((element) => {
         // const val1 = await User.findById(userId).populate('user_profiles');
+        // console.log(element);
         const val2 = element.user_profiles;
         const val3 = val2[0].dob;
         temp.push(val3);
     });
-    // const { userId } = req.params;
-    // const val1 = await User.findById(userId).populate('user_profiles');
-    // const val2 = val1.user_profiles;
-    // const val3 = val2[0].dob;
-    console.log(temp);
-    // console.log(val1);
-    // res.status(201).json(user.test_scores);
+    // console.log(temp);
+    temp.map((elem) => {
+        tot += elem;
+    });
+    avg += tot/temp.length;
+    console.log(avg);
 }
     
 

@@ -1,7 +1,7 @@
 {
   "name": "nodetest",
   "version": "1.0.0",
-  "description": "",
+  "description": "1st and 2nd Question.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -15,6 +15,14 @@
     "md5": "^2.3.0",
     "mongoose": "^5.10.5",
     "morgan": "^1.10.0",
-    "node": "^14.10.1"
-  }
+    "node": "^14.11.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/remixrajat/new-avg-of-ages.git"
+  },
+  "bugs": {
+    "url": "https://github.com/remixrajat/new-avg-of-ages/issues"
+  },
+  "homepage": "https://github.com/remixrajat/new-avg-of-ages#readme"
 }
