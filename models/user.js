@@ -12,7 +12,5 @@ const userSchema = new Schema({
         ref: 'user_profile'
     }]
 });
-
 const User = mongoose.model ('user', userSchema);
-
 module.exports = User;
