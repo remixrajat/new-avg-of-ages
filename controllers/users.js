@@ -15,7 +15,9 @@ module.exports = {
 
   getProfile: async (req, res, next) => {
     const { userProfileId } = req.params;
-    const user = await User_profile.findById(userProfileId);
+    const userProfile = await User_profile.findById(userProfileId).populate(
+      "userId"
+    );
     res.json(user);
   },
 

@@ -6,7 +6,7 @@ const user_profileSchema = new Schema({
   Mobile_no: String,
   userId: {
     type: Schema.Types.ObjectId,
-    ref: "_id",
+    ref: "user",
   },
 });
 
