@@ -7,12 +7,6 @@ const userSchema = new Schema({
   email: String,
   lastname: String,
   password: String,
-  user_profiles: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "user_profile",
-    },
-  ],
 });
 const User = mongoose.model("user", userSchema);
 module.exports = User;

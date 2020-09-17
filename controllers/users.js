@@ -2,41 +2,38 @@ const User = require("../models/user");
 const User_profile = require("../models/user_profile");
 
 module.exports = {
-  getAllUsers: async (req, res) => {
+  getUsers: async (req, res) => {
     const users = await User.find({});
     res.json(users);
   },
 
-  newUser: async (req, res, next) => {
+  createUser: async (req, res, next) => {
     const newUser = new User(req.body);
     const user = await newUser.save();
     res.json(user);
   },
 
-  getUserUserprofiles: async (req, res, next) => {
-    const { userId } = req.params;
-    const user = await User.findById(userId).populate("user_profiles");
-    res.json(user.user_profiles);
+  getProfile: async (req, res, next) => {
+    const { userProfileId } = req.params;
+    const user = await User_profile.findById(userProfileId);
+    res.json(user);
   },
 
-  newUserUserprofile: async (req, res, next) => {
+  createProfile: async (req, res, next) => {
     const { userId } = req.params;
-    const newUser_profile = new User_profile(req.body);
     const user = await User.findById(userId);
-    newUser_profile.users = user;
+    req.body.userId = user._id;
+    const newUser_profile = new User_profile(req.body);
     await newUser_profile.save();
-    user.user_profiles.push(newUser_profile);
-    await user.save();
     res.json({ success: true });
   },
 
-  getUserUserprofileAvg: async (req, res, next) => {
+  getAvg: async (req, res, next) => {
     var tot = 0;
     var avg = 0;
-    const users = await User.find({}).populate("user_profiles");
+    const users = await User_profile.find({});
     users.map((element) => {
-      const val1 =
-        new Date().getFullYear() - element.user_profiles[0].dob.getFullYear();
+      const val1 = new Date().getFullYear() - element.dob.getFullYear();
       tot += val1;
     });
     avg += tot / users.length;
